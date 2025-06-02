@@ -1,4 +1,4 @@
-## How to Install the Modeling Shortcuts
+### How to Install the Modeling Shortcuts
 This .xlam add-in will:
 	•	Load your macros globally
 	•	Register all keyboard shortcuts (Ctrl+Shift+1, 2, 5, etc.)
@@ -6,13 +6,13 @@ This .xlam add-in will:
 
 ⸻
 
-✅ STEP 1: Open Excel VBA Editor
+## STEP 1: Open Excel VBA Editor
 	1.	Open Excel
 	2.	Press Alt + F11 to launch the Visual Basic for Applications editor
 
 ⸻
 
-✅ STEP 2: Import Your Macro Module
+## STEP 2: Import Your Macro Module
 	1.	In the VBA editor:
 File > Import File…
 	2.	Select FinancialModelingShortcuts.bas from your GitHub repo
@@ -20,7 +20,7 @@ File > Import File…
 
 ⸻
 
-✅ STEP 3: Register Keyboard Shortcuts
+## STEP 3: Register Keyboard Shortcuts
 	1.	In the Project Pane, double-click ThisWorkbook
 	2.	Paste the following into the Workbook_Open() event:
 	
@@ -42,7 +42,8 @@ End Sub
 
 ```
 
-✅ STEP 4: Save as an Add-In (.xlam)
+## STEP 4: Save as an Add-In (.xlam)
+
 	1.	In Excel (not VBA editor):
 File > Save As
 	2.	Choose a location (e.g., your GitHub folder)
@@ -52,7 +53,8 @@ File > Save As
 
 ⸻
 
-✅ STEP 5: Install the Add-In
+## STEP 5: Install the Add-In
+
 	1.	In Excel: File > Options > Add-ins
 	2.	At the bottom:
 Manage: Excel Add-ins > Go
