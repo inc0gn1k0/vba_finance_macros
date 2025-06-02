@@ -13,8 +13,7 @@ This .xlam add-in will:
 ⸻
 
 ## STEP 2: Import Your Macro Module
-	1.	In the VBA editor:
-File > Import File…
+	1.	In the VBA editor: File > Import File…
 	2.	Select FinancialModelingShortcuts.bas from your GitHub repo
 	3.	You’ll see a new module appear in the Project pane (likely named Module1 or FinancialModelingShortcuts)
 
@@ -44,8 +43,7 @@ End Sub
 
 ## STEP 4: Save as an Add-In (.xlam)
 
-	1.	In Excel (not VBA editor):
-File > Save As
+	1.	In Excel (not VBA editor): File > Save As
 	2.	Choose a location (e.g., your GitHub folder)
 	3.	Set file type to Excel Add-In (*.xlam)
 	4.	Name it: ModelingShortcuts.xlam
@@ -56,8 +54,7 @@ File > Save As
 ## STEP 5: Install the Add-In
 
 	1.	In Excel: File > Options > Add-ins
-	2.	At the bottom:
-Manage: Excel Add-ins > Go
+	2.	At the bottom: Manage: Excel Add-ins > Go
 	3.	Click Browse… and select your ModelingShortcuts.xlam
 	4.	Check the box ✅ to enable it
 	5.	Click OK
