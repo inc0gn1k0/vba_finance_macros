@@ -1,13 +1,20 @@
 
 Attribute VB_Name = "FinancialModelingShortcuts"
 ' ===============================
-' Ctrl+Shift+1: Number Format Cycle
+' Module-level Variables
 ' ===============================
 Dim formatIndex As Integer
+Dim dateFormatIndex As Integer
+Dim percentFormatIndex As Integer
+Dim multipleFormatIndex As Integer
+Dim borderCycleIndex As Integer
 
+' ===============================
+' Ctrl+Shift+1: Number Format Cycle
+' ===============================
 Sub CtrlShift1_NumberCycle()
     Dim formats As Variant
-    formats = Array("#,##0", "#,##0.0", "#,##0.00", "_(* #,##0_);_(* (#,##0);_(* "-"_);_(@_)", "0", "General")
+    formats = Array("#,##0", "#,##0.0", "#,##0.00", "_(* #,##0_);_(* (#,##0);_(* ""-""_);_(@_)", "0", "General")
     formatIndex = (formatIndex + 1) Mod (UBound(formats) + 1)
     Dim cell As Range
     For Each cell In Selection
@@ -20,8 +27,6 @@ End Sub
 ' ===============================
 ' Ctrl+Shift+2: Date Format Cycle
 ' ===============================
-Dim dateFormatIndex As Integer
-
 Sub CtrlShift2_DateCycle()
     Dim formats As Variant
     formats = Array("dd/mm/yyyy", "dd-mmm-yyyy", "mmm-yy", "mmmm dd, yyyy", "mm/dd/yyyy", "yyyy-mm-dd")
@@ -37,8 +42,6 @@ End Sub
 ' ===============================
 ' Ctrl+Shift+5: Percent Format Cycle
 ' ===============================
-Dim percentFormatIndex As Integer
-
 Sub CtrlShift5_PercentCycle()
     Dim formats As Variant
     formats = Array("0%", "0.0%", "0.00%")
@@ -56,11 +59,9 @@ End Sub
 ' ===============================
 ' Ctrl+Shift+8: Financial Multiples Cycle
 ' ===============================
-Dim multipleFormatIndex As Integer
-
 Sub CtrlShift8_MultipleCycle()
     Dim formats As Variant
-    formats = Array("#,##0", "0.0"x"", "0.0,"K"", "0.0,," M"", "0.00,,," B"")
+    formats = Array("#,##0", "0.0""x""", "0.0,""K""", "0.0,,""M""", "0.00,,,""B""")
     multipleFormatIndex = (multipleFormatIndex + 1) Mod (UBound(formats) + 1)
     Dim cell As Range
     For Each cell In Selection
@@ -91,8 +92,6 @@ End Sub
 ' ===============================
 ' Ctrl+Alt+Shift+Arrow: Border Cycle
 ' ===============================
-Dim borderCycleIndex As Integer
-
 Sub CtrlAltShift_BorderCycle()
     Dim cell As Range
     Dim borders As Variant
@@ -104,11 +103,15 @@ Sub CtrlAltShift_BorderCycle()
         End With
         Select Case borders(borderCycleIndex)
             Case "Bottom"
-                cell.Borders(xlEdgeBottom).LineStyle = xlContinuous
-                cell.Borders(xlEdgeBottom).Weight = xlThin
+                With cell.Borders(xlEdgeBottom)
+                    .LineStyle = xlContinuous
+                    .Weight = xlThin
+                End With
             Case "Top"
-                cell.Borders(xlEdgeTop).LineStyle = xlContinuous
-                cell.Borders(xlEdgeTop).Weight = xlThin
+                With cell.Borders(xlEdgeTop)
+                    .LineStyle = xlContinuous
+                    .Weight = xlThin
+                End With
             Case "All"
                 With cell.Borders
                     .LineStyle = xlContinuous
@@ -152,11 +155,16 @@ Sub CtrlPeriod_IncreaseDecimal()
 End Sub
 
 Function AdjustDecimals(fmt As String, delta As Integer) As String
+    Dim cleanedFmt As String
     Dim base As String
     Dim decimals As Integer
-    Dim newFormat As String
-
-    If InStr(fmt, ".") > 0 Then
+    Dim i As Integer
+    
+    ' Strip formatting to a core decimal pattern
+    If fmt = "General" Or fmt = "" Then
+        base = "0"
+        decimals = 0
+    ElseIf InStr(fmt, ".") > 0 Then
         base = Split(fmt, ".")(0)
         decimals = Len(Split(fmt, ".")(1))
     Else
@@ -165,6 +173,5 @@ Function AdjustDecimals(fmt As String, delta As Integer) As String
     End If
 
     decimals = Application.Max(0, decimals + delta)
-    newFormat = base & IIf(decimals > 0, "." & String(decimals, "0"), "")
-    AdjustDecimals = newFormat
+    AdjustDecimals = base & IIf(decimals > 0, "." & String(decimals, "0"), "")
 End Function

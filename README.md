@@ -71,3 +71,34 @@ End Sub
     └── FinancialModelingShortcuts.bas
     
 ```
+
+
+Shortcut
+Action
+Ctrl + Shift + 1
+Cycle number formats (e.g. 1,000 → 1,000.00 → Accounting → General)
+
+Ctrl + Shift + 2
+Cycle date formats (e.g. 01/01/2024 → Jan-24 → 2024-01-01)
+
+Ctrl + Shift + 5
+Cycle percentage formats (e.g. 50 → 50% → 50.0% → 50.00%)
+
+Ctrl + Shift + 8
+Cycle financial multiples (e.g. 1,200,000 → 1.2M → 1.20B)
+
+Ctrl + Alt + A
+Auto-colour based on cell content:• Formulas = Green• Numbers = Blue• Text = Gray
+
+Ctrl + Alt + Shift + Arrow Keys
+Cycle border styles (None → Bottom → Top → All)
+
+Ctrl + Shift + N
+Multiply selected numeric values by -1 (flip sign)
+
+Ctrl + , (comma)
+Decrease decimal places
+
+Ctrl + . (period)
+Increase decimal places
+
